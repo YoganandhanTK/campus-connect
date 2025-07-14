@@ -75,17 +75,24 @@ const AdminDashboard = () => {
     };
 
     const fetchStudentCount = async () => {
-        setLoadingStudents(true);
-        try {
-            const res = await axios.get(STUDENT_API);
-            const approved = res.data.filter(s => s.role?.toLowerCase() === "student");
-            animateWithDelay(approved.length, setStudentCount, setLoadingStudents);
-        } catch (err) {
-            console.error("Error fetching student count:", err);
-            setStudentCount(0);
-            setLoadingStudents(false);
-        }
-    };
+    setLoadingStudents(true);
+    try {
+        const token = localStorage.getItem("token"); // or however you're storing JWT
+        const res = await axios.get(STUDENT_API, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        const approved = res.data.filter(s => s.role?.toLowerCase() === "student");
+        animateWithDelay(approved.length, setStudentCount, setLoadingStudents);
+    } catch (err) {
+        console.error("Error fetching student count:", err);
+        setStudentCount(0);
+        setLoadingStudents(false);
+    }
+};
+
 
     const stats = [
         { label: "Total Notices", value: noticeCount, loading: loadingNotices },
