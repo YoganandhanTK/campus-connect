@@ -1,0 +1,217 @@
+
+/* Footer styles */
+.footer {
+    background-color: transparent;
+    color: #222;
+    max-width: 100vw;
+    height: 50px;
+    font-size: 0.95rem;
+/*    border-top: 1px solid #ccc;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Main Navbar styles */
+.navbar {
+    display: flex;
+    max-width: 100vw;
+    height: 50px;
+    justify-content: space-between;
+    align-items:center;
+    background-color: darkslategray;
+    padding: 8px 5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Logo section */
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+    color: #333;
+}
+
+.logo-img {
+    height: 35px;
+    width: auto;
+    
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fcfddd;
+}
+
+/* Navigation buttons */
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    font-size: .8rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 35px;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn {
+    background-color: white;
+    color: darkslategray;
+    border: 2px solid transparent;
+}
+.register-btn {
+    background-color: deepskyblue;
+    color: white;
+    border: 2px solid transparent;
+}
+
+    .login-btn:hover,
+    .register-btn:hover {
+        background-color: darkslategray;
+        color: white;
+        border: 2px solid white;
+    }
+
+.logout-btn {
+    background-color: #dc2626;
+    color: white;
+    border: none;
+}
+
+    .logout-btn:hover {
+        background-color: #b91c1c;
+    }
+
+/* Welcome message and badge */
+.welcome-msg {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    gap: 10px;
+}
+
+.user-details{
+    display:contents;
+    align-items:baseline;
+    gap:10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ffffff;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.badge {
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    border-radius: 8px;
+    background-color: #e5e7eb;
+    color: #111827;
+}
+
+.role-admin {
+    background-color: #2563eb;
+    color: white;
+}
+
+.role-student {
+    background-color: #10b981;
+    color: white;
+}
+
+.role-faculty {
+    background-color: #f59e0b;
+    color: white;
+}
+/* tab view */
+@media (max-width: 756px) {
+    .navbar {
+        padding: 0.5rem 2rem;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .btn-text {
+        display: flex   ;
+    }
+
+    .btn {
+        padding: 0.6rem;
+        border-radius: 10px;
+        height: 30px;
+        justify-content: center;
+        font-size: .8rem;
+    }
+
+    .nav-buttons {
+        gap: 0.6rem;
+    }
+
+    .logo-text {
+        font-size: 1rem;
+    }
+
+    .logo-img {
+        height: 32px;
+    }
+
+    .welcome-msg {
+        display: none;
+    }
+}
+
+
+/* Mobile view */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.5rem 2rem;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .btn-text {
+        display: none;
+    }
+
+    .btn {
+        padding: 0.6rem;
+        border-radius: 50%;
+        justify-content: center;
+        font-size: 1.1rem;
+    }
+
+    .nav-buttons {
+        gap: 0.6rem;
+    }
+
+    .logo-text {
+        font-size: 1rem;
+    }
+
+    .logo-img {
+        height: 32px;
+    }
+
+    .welcome-msg {
+        display: none;
+    }
+}
+

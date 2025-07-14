@@ -1,0 +1,101 @@
+﻿/* Base Layout */
+.landing-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../assets/backg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Hero Section */
+.hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+.hero-content {
+    background-color: rgba(0, 51, 51, 0.7);
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    backdrop-filter: blur(3px);
+}
+    /* Text Styling */
+    .hero-content h1 {
+        font-size: 2.5rem;
+        color: white;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+        color: white;
+        margin-bottom: 1.5rem;
+    }
+/* Button */
+.get-started {
+    background-color: #fcfddd;
+    color: #17433d;
+    border: 2px solid transparent;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .get-started:hover {
+        background-color: #00393c;
+        color: #fcfddd;
+        border: 2px solid #fcfddd;
+    }
+
+/* ✅ Responsive Design */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 2rem 1.5rem;
+    }
+
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+        }
+
+    .get-started {
+        font-size: 0.95rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 1.5rem 1rem;
+        border-radius: 8px;
+    }
+
+        .hero-content h1 {
+            font-size: 1.6rem;
+        }
+
+        .hero-content p {
+            font-size: 0.95rem;
+        }
+
+    .get-started {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+}

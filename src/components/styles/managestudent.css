@@ -1,0 +1,303 @@
+.manage-students-content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #1c3c64;
+}
+    .manage-students-content::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .manage-students-content::-webkit-scrollbar-thumb {
+        background-color: #444;
+        border-radius: 10px;
+    }
+.manage-students-header h2 {
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.manage-students-header p {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.student-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.student-search-filter {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+    .student-search-filter input,
+    .student-search-filter select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+        width: 250px;
+    }
+
+.student-table {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.student-table-header,
+.student-row {
+    display: grid;
+    grid-template-columns: 2.5fr 2fr 1.5fr 1fr;
+    padding: 15px 20px;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    color:#333;
+}
+
+.student-table-header {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    color: #34495e;
+}
+
+.student-row:hover {
+    background-color: #fafafa;
+}
+
+.student-user-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.student-avatar {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.student-email {
+    font-size: 13px;
+    color: #7f8c8d;
+}
+
+.student-actions {
+    display: flex;
+    gap: 10px;
+    font-size: 18px;
+/*    justify-content: center;*/
+}
+
+    .student-actions svg {
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+        .student-actions svg:hover {
+            transform: scale(1.2);
+        }
+
+.student-loading,
+.student-no-data {
+    text-align: center;
+    padding: 20px;
+    color: #555;
+    font-weight: 500;
+}
+
+/* Modal */
+.student-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.student-modal {
+    background: white;
+    padding: 24px;
+    border-radius: 10px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+    .student-modal input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+.student-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+    .student-modal-actions button {
+        padding: 8px 16px;
+        border: none;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .student-modal-actions button:first-child {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .student-modal-actions button:last-child {
+            background-color: #ccc;
+            color: #333;
+        }
+
+/* Toast/Popup */
+.student-popup-message {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #323232;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    z-index: 1000;
+    font-size: 14px;
+    animation: fadeInOut 3s ease-in-out;
+}
+
+
+
+
+/* Add/Modify these styles for the confirm overlay and box */
+
+.student-confirm-overlay {
+    position: fixed; /* Fixes it relative to the viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker overlay for better contrast */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Vertically center */
+    justify-content: center; /* Horizontally center */
+    z-index: 1000; /* Ensure it's on top of other content */
+}
+
+.student-confirm-box {
+    background: white;
+    padding: 25px 35px; /* Increase padding for better appearance */
+    border-radius: 10px;
+    width: 350px; /* Set a fixed width */
+    max-width: 90%; /* Ensure it's responsive on smaller screens */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    text-align: center; /* Center text inside the box */
+    animation: fadeIn 0.3s ease-out; /* Add a subtle fade-in animation */
+    color: #333; /* Darker text for readability */
+}
+
+    .student-confirm-box p {
+        margin-bottom: 25px; /* More space below the message */
+        font-size: 1.1em; /* Slightly larger font */
+        line-height: 1.5;
+    }
+
+.confirm-actions {
+    display: flex;
+    justify-content: center; /* Center the action buttons */
+    gap: 15px; /* Space between buttons */
+}
+
+    .confirm-actions button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+        .confirm-actions button:first-child { /* Yes button */
+            background-color: #e74c3c; /* A strong red for delete confirmation */
+            color: white;
+        }
+
+            .confirm-actions button:first-child:hover {
+                background-color: #c0392b;
+                transform: translateY(-2px);
+            }
+
+        .confirm-actions button:last-child { /* Cancel button */
+            background-color: #bdc3c7; /* A neutral gray */
+            color: #333;
+        }
+
+            .confirm-actions button:last-child:hover {
+                background-color: #95a5a6;
+                transform: translateY(-2px);
+            }
+
+/* Optional: Fade-in animation for the confirm box */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}

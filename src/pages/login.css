@@ -1,0 +1,137 @@
+﻿/* login.css */
+.loginpage {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url('../assets/backg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.login-page {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem;
+}
+
+.login-card {
+    background-color: rgb(106 176 179 / 72%);
+    backdrop-filter: blur(2px);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+}
+
+    .login-card h2 {
+        color: white;
+        text-align: center;
+        margin-bottom: 1.8rem;
+    }
+
+    .login-card input {
+        padding: 0.9rem 1rem;
+        background-color: #fffffff7;
+        margin-bottom: 1rem;
+        color: darkgreen;
+        font-weight: 700;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+
+        .login-card input:focus {
+            border-color: #fcfddd;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+        }
+
+/* 👁️ Password input wrapper */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+    .password-wrapper input {
+        padding-right: 170px; /* space for the eye icon */
+    }
+
+.password-toggle-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-75%);
+    cursor: pointer;
+    color: #2d5a23;
+    font-size: 20px;
+}
+.forgot-password {
+    text-align: right;
+    color: #2d5a23;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+}
+
+    .forgot-password:hover {
+        text-decoration: underline;
+    }
+
+.btn-submit {
+    background-color: #4a7e43;
+    padding: 10px;
+    font-size: 1rem;
+    width: 50%;
+    align-self: center;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-submit:hover {
+        background-color: #355b30;
+        border: none;
+    }
+
+.signup-link {
+    text-align: center;
+    color: #fcfddd;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+}
+
+    .signup-link span {
+        cursor: pointer;
+        color: #2d5a23;
+        font-weight: bold;
+    }
+
+        .signup-link span:hover {
+            text-decoration: underline;
+        }
+
+.error-msg {
+    background-color: #ffe6e6;
+    color: #cc0000;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    text-align: center;
+   
+}
+
+
