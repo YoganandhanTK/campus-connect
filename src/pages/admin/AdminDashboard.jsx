@@ -1,6 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './style/AdminDashboard.css';
+import './style/admindashboard.css';
 import BASE_URL from '../../config.js';
 
 const AdminDashboard = () => {
