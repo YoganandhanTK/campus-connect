@@ -1,13 +1,4 @@
-.notice-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('../../../assets/backg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+
 .edit-delete-buttons{
     display:flex;
 }
@@ -231,6 +222,8 @@ span.tag.maths {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
     .notice-views span {
@@ -338,33 +331,10 @@ span.tag.maths {
         }
 
 /* Dropdown style */
-/* .form-select {
+.form-select {
     background-color: #fff;
     color: #333;
     cursor: pointer;
-} */
-.form-select {
-  width: 100%;
-  padding: 10px 12px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='gray' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 16px 16px;
-  cursor: pointer;
-  box-shadow: none;
-  outline: none;
-}
-
-.form-select:focus {
-  border-color: #45ACD9;
-  box-shadow: 0 0 0 2px rgba(69, 172, 217, 0.3);
 }
 
 /* Textarea */
@@ -377,7 +347,6 @@ span.tag.maths {
 .modal-actions {
     display: flex;
     justify-content: space-evenly;
-    gap: 20px;
 }
     /* Common button styles */
     .modal-actions button {
@@ -590,9 +559,10 @@ span.tag.maths {
     }
     .edit-delete-buttons {
        display: flex;
-        justify-content: space-around;
+        justify-content: flex-end;
         flex-direction: row;
         width: 100%;
+        margin-top: 10px;
     }
 
     .notice-actions {
@@ -649,67 +619,23 @@ span.tag.maths {
     flex-direction: column;
 }
 }
-/* Add to your existing CSS file (e.g., if this modal is part of your admin dashboard, add to that CSS) */
-
-/* Ensure the modal content itself looks good on mobile */
-@media (max-width: 768px) {
-    .modal-content {
-        padding: 20px; /* Reduce padding for smaller screens */
-        margin-top: 20px; /* Adjust top margin for better positioning */
-        margin-bottom: 20px; /* Add bottom margin to avoid being too close to the bottom */
-        max-height: 90vh; /* Allow modal to take up more vertical space */
-        overflow-y: auto; /* Enable scrolling if content overflows */
-        width: 95%; /* Make it slightly wider on very small screens */
-    }
-.model-actions {
-        gap: 20px;
+.pinned-notice {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  background-color: #ffeaea; /* Light red background */
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: red;
+  font-size: 0.95rem;
+  width: fit-content;
+  gap: 5px;
 }
-    .modal-content h3 {
-        font-size: 22px; /* Slightly smaller heading */
-        margin-bottom: 15px;
-    }
 
-    .modal-content input,
-    .modal-content select,
-    .modal-content textarea {
-        font-size: 15px; /* Slightly smaller font size for inputs */
-        padding: 12px; /* Consistent padding */
-        margin-bottom: 10px; /* Reduced bottom margin */
-    }
-
-    /* Target the select elements within the modal specifically */
-    .modal-content .form-select {
-        /* This hides the default dropdown arrow provided by the browser */
-        
-        /* You can add a custom background image for an arrow if desired,
-           but given the default mobile behavior, it might be better to let
-           the OS handle the actual dropdown UI */
-        background-color: #f9f9f9; /* Match input background */
-        color: #072032; /* Match input text color */
-        border: 1px solid #ccc; /* Match input border */
-        padding-right: 30px; /* Make space for a custom arrow if you add one */
-    }
-
-    /* Style for the default option to make it blend in */
-    .modal-content .form-select option[value=""] {
-        color: #999; /* Matches your existing placeholder color */
-    }
-
-    /* General button styling within the modal actions */
-    .modal-actions button {
-        padding: 10px 15px; /* Adjust button padding */
-        font-size: 15px; /* Adjust button font size */
-        flex: 1; /* Allow buttons to grow and fill space */
-        min-width: unset; /* Override any fixed width */
-    }
-
-    /* Add a custom dropdown icon for select if desired (optional) */
-    /* This will only affect the select box itself, not the native option list */
-    .modal-content .form-select {
-        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='gray' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
- 
-        background-repeat: no-repeat;
-        background-position: right 10px center;
-        background-size: 25px;
-    }
+@media (max-width: 600px) {
+  .pinned-notice {
+    font-size: 0.9rem;
+    padding: 4px 10px;
+  }
 }

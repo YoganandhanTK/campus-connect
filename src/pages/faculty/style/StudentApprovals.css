@@ -1,185 +1,342 @@
-
-
-.main-content {
+/* General Layout & Background */
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f7f9fc;
-    min-height: 100vh background-color: #fff;
+    background-color: #f4f7f6; /* Light grey background */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.student-approvals-container { /* Renamed from .student-approvals__container */
+  padding: 2rem;
+    margin: 1rem; /* Center the content with top/bottom margin */
+    background-color: #ffffff; /* White background for the content area */
     border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Soft shadow for depth */
+    position: relative;
+    overflow: hidden; /* Ensures no overflow for rounded corners */
+    height: 100%;
 }
 
-.header {
-    margin-bottom: 1.5rem;
+/* Header Section */
+.student-approvals-header { /* Renamed from .student-approvals__header */
     text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
 }
 
-    .header h2 {
-        font-size: 1.8rem;
-        color: #1c3c64;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-
-    .header p {
-        font-size: 1rem;
-        color: #555;
-        margin-top: 0.3rem;
-    }
-
-.student-table {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.table-header,
-.table-row {
-    display: grid;
-    grid-template-columns: 1.5fr 2fr 1.5fr 1.5fr 1fr 1fr;
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #e3e3e3;
-    align-items: center;
-}
-
-.table-header {
-    font-weight: bold;
-    background-color: #f0f4f8;
+.student-approvals-header h2 {
+    font-size: 2.2em;
     color: #333;
-    border-radius: 8px 8px 0 0;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
-.table-row {
+.student-approvals-header h2 .student-approvals-icon { /* Renamed from .student-approvals__icon */
+    color: #007bff; /* Primary color for the icon */
+    font-size: 1.2em;
+}
+
+.student-approvals-header p {
+    font-size: 1.1em;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Student Table */
+.student-approvals-table { /* Renamed from .student-approvals__table */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden; /* For rounded corners on the table */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for the table */
+}
+
+.student-approvals-table-header,
+.student-approvals-table-row { /* Renamed from .student-approvals__table-header, .student-approvals__table-row */
+    display: grid;
+    /* Define 6 columns for the table. Adjust widths as necessary. */
+    grid-template-columns: 1.5fr 2fr 1.2fr 1.5fr 1fr 1fr;
+    padding: 15px 20px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.student-approvals-table-header { /* Renamed from .student-approvals__table-header */
+    background-color: #007bff; /* Primary blue for header */
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+.student-approvals-table-row { /* Renamed from .student-approvals__table-row */
     background-color: #ffffff;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-    color:#333;
-    font-weight:bolder;
+    transition: background-color 0.2s ease;
 }
 
-    .table-row:hover {
-        background-color: #f9fbfd;
-    }
+.student-approvals-table-row:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping for better readability */
+}
 
-.action-button {
+.student-approvals-table-row:hover {
+    background-color: #eaf6ff; /* Light blue on hover */
+}
+
+/* Data cells in table rows */
+.student-approvals-table-row span { /* Targeting span within renamed row */
+    color: #444;
+    font-size: 0.95em;
+    word-break: break-word; /* Prevents long text from overflowing */
+}
+
+.student-approvals-table-row span[data-label] { /* Targeting span within renamed row */
+    position: relative;
+}
+
+/* Actions Column */
+.student-approvals-actions { /* Renamed from .student-approvals__actions */
+    display: flex;
+    gap: 8px; /* Space between action buttons */
+    justify-content: flex-start;
+}
+
+.student-approvals-action-button { /* Renamed from .student-approvals__action-button */
     background: none;
     border: none;
     cursor: pointer;
-    padding: 6px;
-    margin: 0 5px;
-    font-size: 1.2rem;
-    display: inline-flex;
+    padding: 8px;
+    border-radius: 50%; /* Make buttons circular */
+    display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1.2em; /* Icon size */
 }
 
-    .action-button:hover {
-        transform: scale(1.1);
-    }
-
-    .action-button.approve .icon {
-        color: #28a745; /* green */
-    }
-
-    .action-button.reject .icon {
-        color: #dc3545; /* red */
-    }
-
-/*.actions {
-    display: flex;
-    justify-content: center;
-    gap: 0.8rem;
-    font-size: 1.2rem;
+.student-approvals-action-button .student-approvals-icon { /* Renamed from .student-approvals__icon */
+    color: inherit; /* Icon color will be set by parent button */
 }
 
-.approve-icon {
-    color: #28a745;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+.student-approvals-action-button-approve { /* Renamed from .student-approvals__action-button--approve */
+    color: #28a745; /* Green for approve */
 }
 
-    .approve-icon:hover {
-        transform: scale(1.2);
-    }
+.student-approvals-action-button-approve:hover {
+    background-color: #e6ffe6;
+    transform: scale(1.1);
+}
 
-.reject-icon {
-    color: #dc3545;
-    cursor: not-allowed;*/ /* if disabled */
-    /*transition: transform 0.2s ease;
-}*/
+.student-approvals-action-button-reject { /* Renamed from .student-approvals__action-button--reject */
+    color: #dc3545; /* Red for reject */
+}
 
-/* Toast */
-.toast {
-    margin-top: 1.5rem;
-    padding: 0.75rem 1.25rem;
-    background-color: #007bff;
-    color: white;
-    font-weight: 500;
-    border-radius: 5px;
+.student-approvals-action-button-reject:hover {
+    background-color: #ffe6e6;
+    transform: scale(1.1);
+}
+
+/* Loading and No Data States */
+.student-approvals-loading-row,
+.student-approvals-no-data-row { /* Renamed from .student-approvals__loading-row, .student-approvals__no-data-row */
     text-align: center;
-    animation: fadeInOut 3s ease-in-out forwards;
+    padding: 30px 20px;
+    color: #666;
+    font-style: italic;
+    font-size: 1.1em;
+    background-color: #fdfdfd;
+}
+
+/* Toast Notification */
+.student-approvals-toast { /* Renamed from .student-approvals__toast */
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(50, 50, 50, 0.9);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1em;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeInOut 3s forwards;
 }
 
 @keyframes fadeInOut {
-    0% {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    10% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    90% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
 }
-.loading-row, .no-data-row {
-    padding: 20px;
+
+/* Custom Confirmation Box */
+.student-approvals-confirm-overlay { /* Renamed from .student-approvals__confirm-overlay */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top of other content */
+}
+
+.student-approvals-confirm-box { /* Renamed from .student-approvals__confirm-box */
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
-    color: #555;
-    font-style: italic;
-    animation: fadeIn 0.4s ease-in-out;
+    max-width: 400px;
+    width: 90%;
+    animation: fadeIn 0.3s ease-out; /* Simple fade-in animation */
+}
+
+.student-approvals-confirm-box p {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.student-approvals-confirm-actions { /* Renamed from .student-approvals__confirm-actions */
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between buttons */
+}
+
+.student-approvals-confirm-actions button { /* Targeting buttons within renamed actions */
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+
+/* Default 'Yes' button color (for Approval) */
+.student-approvals-confirm-yes { /* Renamed from .student-approvals__confirm-yes */
+    background-color: #28a745; /* Green for approve confirmation */
+    color: #fff;
+}
+
+.student-approvals-confirm-yes:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Specific 'Yes' button color for Reject action */
+.student-approvals-confirm-yes-reject { /* Renamed from .student-approvals__confirm-yes--reject */
+    background-color: #dc3545; /* Red for reject confirmation */
+}
+
+.student-approvals-confirm-yes-reject:hover {
+    background-color: #c82333;
+}
+
+/* Cancel button color (remains the same for both) */
+.student-approvals-confirm-cancel { /* Renamed from .student-approvals__confirm-cancel */
+    background-color: #6c757d; /* A neutral grey for cancel */
+    color: #fff;
+}
+
+.student-approvals-confirm-cancel:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-
-
-
-
-
-
-
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .table-header,
-    .table-row {
-        grid-template-columns: 1fr 1.5fr 1fr;
-        font-size: 0.85rem;
-        padding: 0.5rem;
+    .student-approvals-container { /* Renamed class */
+        padding: 20px;
+        margin: 20px;
     }
 
-        .table-header span:nth-child(n+4),
-        .table-row span:nth-child(n+4) {
-            display: none; /* Hide department, batch, actions for small screen */
-        }
+    .student-approvals-header h2 { /* Renamed class */
+        font-size: 1.8em;
+    }
+
+    .student-approvals-table { /* Renamed class */
+        border: none;
+        box-shadow: none;
+    }
+
+    .student-approvals-table-header { /* Renamed class */
+        display: none;
+    }
+
+    .student-approvals-table-row { /* Renamed class */
+        grid-template-columns: 1fr;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        display: block;
+        padding: 15px;
+    }
+
+    .student-approvals-table-row span { /* Targeting span within renamed row */
+        display: flex;
+        padding: 5px 0;
+        text-align: left;
+        border-bottom: 1px dashed #f0f0f0;
+    }
+
+    .student-approvals-table-row span:last-of-type { /* Targeting span within renamed row */
+        border-bottom: none;
+    }
+
+    /* Data labels for mobile view */
+    .student-approvals-table-row span[data-label]::before { /* Targeting span within renamed row */
+        content: attr(data-label) ": ";
+        font-weight: bold;
+        color: #007bff;
+        margin-right: 5px;
+        display: inline-block;
+        width: 100px;
+    }
+
+    .student-approvals-actions { /* Renamed class */
+        justify-content: space-around;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dashed #f0f0f0;
+    }
 }
+
+@media (max-width: 480px) {
+    .student-approvals-container { /* Renamed class */
+        margin: 15px;
+        padding: 15px;
+    }
+
+    .student-approvals-header h2 { /* Renamed class */
+        font-size: 1.5em;
+    }
+
+    .student-approvals-header p { /* Renamed class */
+        font-size: 0.95em;
+    }
+
+    .student-approvals-action-button { /* Renamed class */
+        font-size: 1em;
+        padding: 6px;
+    }
+
+    .student-approvals-table-row span[data-label]::before { /* Targeting span within renamed row */
+        width: 100px;
+    }
+} 

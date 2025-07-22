@@ -1,6 +1,6 @@
-﻿import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
-import "./style/noticeboard.css";
+import "./style/FacultyNotice.css";
 import { FiCalendar, FiEye, FiMessageSquare } from "react-icons/fi";
 import { FaThumbtack } from "react-icons/fa";
 import {faUserPlus} from '@fortawesome/free-solid-svg-icons';
@@ -23,7 +23,7 @@ const markAsViewedToday = (noticeId) => {
     localStorage.setItem("noticeViews", JSON.stringify(views));
 };
 
-const NoticeBoard = () => {
+const FacultyNotice = () => {
     const [search, setSearch] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [selectedDepartment, setSelectedDepartment] = useState("All");
@@ -398,4 +398,4 @@ const NoticeBoard = () => {
     );
 };
 
-export default NoticeBoard;
+export default FacultyNotice;

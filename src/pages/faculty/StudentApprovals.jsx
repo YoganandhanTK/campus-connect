@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BASE_URL from "../../config";
-import "./style/StudentApprovals.css";
+import "./style/StudentApprovals.css"; // Ensure this path is correct
 import { FaCheckCircle, FaTimesCircle, FaUserGraduate } from "react-icons/fa";
 
 const StudentApprovals = () => {
     const [students, setStudents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [toast, setToast] = useState("");
+    const [confirmBox, setConfirmBox] = useState({
+        visible: false,
+        message: '',
+        onConfirm: null,
+        studentId: null,
+        type: '' // Add a 'type' property: 'approve' or 'reject'
+    });
 
     const token = localStorage.getItem("token");
 
@@ -35,7 +42,18 @@ const StudentApprovals = () => {
         }
     };
 
-    const approveStudent = async (studentId) => {
+    const handleApproveClick = (studentId) => {
+        setConfirmBox({
+            visible: true,
+            message: "Are you sure you want to approve this student?",
+            onConfirm: () => confirmApproveStudent(studentId),
+            studentId: studentId,
+            type: 'approve' // Set type to 'approve'
+        });
+    };
+
+    const confirmApproveStudent = async (studentId) => {
+        setConfirmBox({ visible: false, onConfirm: null, message: '', studentId: null, type: '' }); // Close confirm box
         try {
             await axios.put(`${BASE_URL}/faculties/approve-student/${studentId}`, {}, {
                 headers: {
@@ -50,10 +68,18 @@ const StudentApprovals = () => {
         }
     };
 
-    const rejectStudent = async (studentId) => {
-        const confirm = window.confirm("Are you sure you want to reject and delete this student?");
-        if (!confirm) return;
+    const handleRejectClick = (studentId) => {
+        setConfirmBox({
+            visible: true,
+            message: "Are you sure you want to reject and delete this student? This action cannot be undone.",
+            onConfirm: () => confirmRejectStudent(studentId),
+            studentId: studentId,
+            type: 'reject' // Set type to 'reject'
+        });
+    };
 
+    const confirmRejectStudent = async (studentId) => {
+        setConfirmBox({ visible: false, onConfirm: null, message: '', studentId: null, type: '' }); // Close confirm box
         try {
             await axios.delete(`${BASE_URL}/students/${studentId}`, {
                 headers: {
@@ -74,14 +100,14 @@ const StudentApprovals = () => {
     };
 
     return (
-        <div className="main-content">
-            <div className="header">
-                <h2><FaUserGraduate /> Pending Student Approvals</h2>
+        <div className="student-approvals-container"> {/* Renamed from student-approvals__container */}
+            <div className="student-approvals-header"> {/* Renamed from student-approvals__header */}
+                <h2><FaUserGraduate />Student Approvals</h2>
                 <p>Approve or reject students from your department</p>
             </div>
 
-            <div className="student-table">
-                <div className="table-header">
+            <div className="student-approvals-table"> {/* Renamed from student-approvals__table */}
+                <div className="student-approvals-table-header"> {/* Renamed from student-approvals__table-header */}
                     <span>Name</span>
                     <span>Email</span>
                     <span>College ID</span>
@@ -91,47 +117,63 @@ const StudentApprovals = () => {
                 </div>
 
                 {loading ? (
-                    <div className="loading-row">
+                    <div className="student-approvals-loading-row"> {/* Renamed from student-approvals__loading-row */}
                         <span>Loading students...</span>
                     </div>
                 ) : students.length === 0 ? (
-                    <div className="no-data-row">
+                    <div className="student-approvals-no-data-row"> {/* Renamed from student-approvals__no-data-row */}
                         <span>No pending students to approve.</span>
                     </div>
                 ) : (
                     students.map((student) => (
-                        <div className="table-row" key={student.id}>
-                            <span>{student.fullName}</span>
-                            <span>{student.email}</span>
-                            <span>{student.collegeId}</span>
-                            <span>{student.department}</span>
-                            <span>{student.batch}</span>
-                            <span className="actions">
+                        <div className="student-approvals-table-row" key={student.id}> {/* Renamed from student-approvals__table-row */}
+                            <span data-label="Name">{student.fullName}</span>
+                            <span data-label="Email">{student.email}</span>
+                            <span data-label="CollegeId">{student.collegeId}</span>
+                            <span data-label="Department">{student.department}</span>
+                            <span data-label="Batch">{student.batch}</span>
+                            <span className="student-approvals-actions"> {/* Renamed from student-approvals__actions */}
                                 <button
-                                    className="action-button approve"
+                                    className="student-approvals-action-button student-approvals-action-button-approve" 
                                     title="Approve"
-                                    onClick={() => approveStudent(student.id)}
+                                    onClick={() => handleApproveClick(student.id)}
                                 >
-                                    <FaCheckCircle className="icon" />
+                                    <FaCheckCircle className="student-approvals-icon" /> {/* Renamed icon class */}
                                 </button>
                                 <button
-                                    className="action-button reject"
+                                    className="student-approvals-action-button student-approvals-action-button-reject" 
                                     title="Reject"
-                                    onClick={() => rejectStudent(student.id)}
+                                    onClick={() => handleRejectClick(student.id)}
                                 >
-                                    <FaTimesCircle className="icon" />
+                                    <FaTimesCircle className="student-approvals-icon" /> {/* Renamed icon class */}
                                 </button>
                             </span>
-
                         </div>
                     ))
                 )}
             </div>
 
-            {toast && <div className="toast">{toast}</div>}
+            {/* Custom Confirmation Box */}
+            {confirmBox.visible && (
+                <div className="student-approvals-confirm-overlay"> {/* Renamed from student-approvals__confirm-overlay */}
+                    <div className="student-approvals-confirm-box"> {/* Renamed from student-approvals__confirm-box */}
+                        <p>{confirmBox.message}</p>
+                        <div className="student-approvals-confirm-actions"> {/* Renamed from student-approvals__confirm-actions */}
+                            <button
+                                className={`student-approvals-confirm-yes ${confirmBox.type === 'reject' ? 'student-approvals-confirm-yes-reject' : ''}`} 
+                                onClick={confirmBox.onConfirm}
+                            >
+                                Yes
+                            </button>
+                            <button className="student-approvals-confirm-cancel" onClick={() => setConfirmBox({ visible: false, onConfirm: null, message: '', studentId: null, type: '' })}>Cancel</button> {/* Renamed class */}
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {toast && <div className="student-approvals-toast">{toast}</div>} {/* Renamed from student-approvals__toast */}
         </div>
     );
-
 };
 
 export default StudentApprovals;

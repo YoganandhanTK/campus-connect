@@ -36,7 +36,7 @@
 .student-search-filter {
     display: flex;
     gap: 15px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
     .student-search-filter input,
@@ -299,5 +299,48 @@
     100% {
         opacity: 0;
         transform: translateY(20px);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .manage-students-content {
+        padding: 16px;
+    }
+
+    .student-filters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .student-search-filter {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .student-search-filter input,
+    .student-search-filter select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .student-table-header,
+    .student-row {
+        grid-template-columns: 1fr;
+        font-size: 14px;
+        gap: 5px;
+    }
+    .student-actions {
+        justify-content: flex-end;
+        gap: 20px;
+    }
+    .student-user-cell{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .student-confirm-box{
+        width: 70%;
     }
 }

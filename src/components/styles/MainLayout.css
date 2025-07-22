@@ -1,37 +1,79 @@
+/* MainLayout.css */
+
 .main-layout {
     display: flex;
     flex-direction: column;
-    max-height: 100vh;
+    min-height: 100vh;
     background-image: url('../../assets/backg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; 
+    background-attachment: fixed;
+    position: relative; /* Important for sidebar overlay positioning */
 }
-
 
 .layout-body {
     display: flex;
-    height: calc(100vh - 120px); /* adjust based on Navbar + Footer height */
+    flex: 1; /* Allows layout-body to take up remaining vertical space */
     background-color: transparent;
 }
 
-/* Rename to avoid conflict with Sidebar.jsx */
+/* Desktop Sidebar Wrapper */
 .layout-sidebar-wrapper {
-    width: 250px;
+  width: 250px;
     background-color: #f5f6d7ba;
     color: white;
-
-    border-radius:10px;
+    border-radius: 0px 0px 0px 10px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    height: auto;
 }
 
 /* Main content area */
 .layout-content {
     display: flex;
     flex-direction: column;
-    width:100vw;
-    height: 100%;
+    flex-grow: 1; /* Allows content to take up remaining horizontal space */
+    height: auto; /* Let content dictate height */
     padding: 0.5rem;
-    overflow-y: auto;
+    overflow-y: auto; /* Allow content to scroll */
     background-color: transparent;
+}
+
+/* Sidebar overlay for mobile */
+.sidebar-overlay {
+    /* This will be shown via JS (sidebarOpen state) and controlled by sidebar.css media query */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998; /* Below sidebar (999) but above main content */
+    transition: opacity 0.3s ease;
+    opacity: 1; /* Default to visible when JS shows it */
+}
+
+/* --- Responsive Adjustments --- */
+
+/* Mobile View (max-width: 768px) */
+@media (max-width: 768px) {
+    .layout-body {
+        flex-direction: column; /* Stack main content and effectively hide sidebar wrapper */
+    }
+
+    /* Hide the desktop sidebar wrapper on mobile */
+    .layout-sidebar-wrapper {
+        width: 0; /* Collapse its width */
+        padding: 0; /* Remove padding */
+        border-right: none; /* Remove border */
+    }
+
+    .layout-content {
+        width: 100%; /* Take full width on mobile */
+        padding: 0rem; /* Adjust padding as needed for mobile content */
+        
+    }
+
+    
 }

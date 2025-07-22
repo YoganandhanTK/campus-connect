@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     border-radius:12px;
     background-color: #f6f9fca6;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -53,6 +54,8 @@
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 6px;
+    background: white;
+    color: black;   
 }
 
 .edit-btn,
@@ -100,4 +103,20 @@
 .logout-btn {
     background-color: #ef4444;
     color: white;
+}
+
+@media (max-width: 768px) {
+    
+.profile-container{
+    min-height: 82vh;
+        
+}
+
+.profile-card {
+  
+    padding: 30px;
+    border-radius: 12px;
+    width: 75%;
+   
+}
 }

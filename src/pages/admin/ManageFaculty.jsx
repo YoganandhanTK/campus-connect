@@ -3,6 +3,10 @@ import { FaTrash, FaEdit } from 'react-icons/fa';
 import axios from 'axios';
 import BASE_URL from '../../config.js';
 import './style/usermanage.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faUserPlus} from '@fortawesome/free-solid-svg-icons';
+
+
 
 const ManageFaculty = () => {
     const [search, setSearch] = useState('');
@@ -203,6 +207,13 @@ const ManageFaculty = () => {
                     <h2>Manage Faculty</h2>
                     <p>View and manage all faculty users</p>
                 </div>
+                <button className="btn-create-faculty" onClick={() => {
+                    resetForm(); // resetForm is a stable function
+                    setShowModal(true);
+                }}>
+                   <FontAwesomeIcon icon={faUserPlus} />
+                    <span className="btn-text"> Create Notice</span>
+                </button>
             </div>
 
             <div className="faculty-filters">
@@ -221,12 +232,6 @@ const ManageFaculty = () => {
                         <option>Chemistry</option>
                     </select>
                 </div>
-                <button className="btn-create-faculty" onClick={() => {
-                    resetForm(); // resetForm is a stable function
-                    setShowModal(true);
-                }}>
-                    + Create Faculty
-                </button>
             </div>
             <div className="faculty-table">
 

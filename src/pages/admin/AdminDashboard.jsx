@@ -1,4 +1,5 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import  { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './style/admindashboard.css';
 import BASE_URL from '../../config.js';
@@ -8,7 +9,7 @@ const AdminDashboard = () => {
     const [noticeCount, setNoticeCount] = useState(0);
     const [facultyCount, setFacultyCount] = useState(0);
     const [studentCount, setStudentCount] = useState(0);
-
+    const navigate = useNavigate();
     const [loadingNotices, setLoadingNotices] = useState(true);
     const [loadingFaculty, setLoadingFaculty] = useState(true);
     const [loadingStudents, setLoadingStudents] = useState(true);
@@ -95,9 +96,9 @@ const AdminDashboard = () => {
 
 
     const stats = [
-        { label: "Total Notices", value: noticeCount, loading: loadingNotices },
-        { label: "Total Faculty", value: facultyCount, loading: loadingFaculty },
-        { label: "Total Students", value: studentCount, loading: loadingStudents },
+        { label: "Total Notices", value: noticeCount, loading: loadingNotices, path: "/admin/noticeboard" },
+        { label: "Total Faculty", value: facultyCount, loading: loadingFaculty, path: "/admin/managefaculty" },
+        { label: "Total Students", value: studentCount, loading: loadingStudents, path: "/admin/managestudents" },
     ];
 
     return (
@@ -108,15 +109,20 @@ const AdminDashboard = () => {
             </div>
 
             <div className="admin-stats-grid">
-                {stats.map((item, index) => (
-                    <div key={index} className="admin-stat-card">
-                        <div className="admin-stat-label">{item.label}</div>
-                        <div className="admin-stat-value">
-                            {item.loading ? <div className="admin-loader"></div> : item.value}
-                        </div>
+            {stats.map((item, index) => (
+                <div
+                    key={index}
+                    className="admin-stat-card"
+                    onClick={() => navigate(item.path)}
+                    style={{ cursor: "pointer" }}
+                >
+                    <div className="admin-stat-label">{item.label}</div>
+                    <div className="admin-stat-value">
+                        {item.loading ? <div className="admin-loader"></div> : item.value}
                     </div>
-                ))}
-            </div>
+                </div>
+            ))}
+        </div>
         </div>
     );
 };

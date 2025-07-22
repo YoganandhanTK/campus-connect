@@ -1,0 +1,199 @@
+
+
+
+.main-center {
+    padding: 2rem;
+  margin: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  color: #072032;
+  height: 100%;
+
+}
+
+/* --- Greeting Section --- */
+.greeting {
+    background-color: #e0f2f7; /* Light blue background */
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.greeting h2 {
+    color: #2c3e50; /* Darker text for heading */
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    font-weight: 700;
+}
+
+.greeting p {
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+/* --- Stats Grid Section --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+    justify-items: center;
+}
+
+.stat-card {
+    width: 300px;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+   justify-content: center;
+    gap: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 8px solid; /* For colored left border */
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.stat-card svg {
+    font-size: 2.5em; /* Larger icon size */
+    opacity: 0.8;
+}
+
+.stat-card p {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0;
+    color: #444;
+}
+
+/* Stat Card Colors */
+.stat-card.orange {
+    border-left-color: #ffa07a; /* Light Salmon */
+}
+.stat-card.orange svg {
+    color: #ff8c00; /* Dark Orange */
+}
+
+.stat-card.purple {
+    border-left-color: #b19cd9; /* Light Purple */
+}
+.stat-card.purple svg {
+    color: #8a2be2; /* Blue Violet */
+}
+
+.stat-card.green {
+    border-left-color: #90ee90; /* Light Green */
+}
+.stat-card.green svg {
+    color: #3cb371; /* Medium Sea Green */
+}
+
+/* --- Recent Activity Section --- */
+.recent-activity {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.recent-activity h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.recent-activity ul {
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.recent-activity li {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 5px solid #a7d9e0; /* Light accent for list items */
+    font-size: 1em;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Specific icons for recent activity for better visual appeal */
+.recent-activity li:nth-child(1)::before { content: '📝'; margin-right: 5px; } /* Assignment */
+.recent-activity li:nth-child(2)::before { content: '📢'; margin-right: 5px; } /* Notice */
+.recent-activity li:nth-child(3)::before { content: '💬'; margin-right: 5px; } /* Chat */
+.recent-activity li:nth-child(4)::before { content: '🎯'; margin-right: 5px; } /* Quiz */
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .main-center {
+        padding: 15px;
+      height: calc(100vh - 175px);
+     
+    }
+
+    .greeting h2 {
+        font-size: 1.8em;
+    }
+
+    .greeting p {
+        font-size: 1em;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically on smaller screens */
+    }
+
+    .stat-card {
+        padding: 12px;
+        flex-direction: column; /* Stack icon and text */
+        text-align: center;
+        gap: 10px;
+        width: 120px;
+    }
+
+    .stat-card svg {
+        margin-bottom: 5px;
+    }
+
+    .recent-activity h3 {
+        font-size: 1.5em;
+    }
+
+    .recent-activity li {
+        padding: 12px;
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    .greeting {
+        padding: 20px;
+    }
+
+    .greeting h2 {
+        font-size: 1.5em;
+    }
+
+    .recent-activity h3 {
+        font-size: 1.3em;
+    }
+}

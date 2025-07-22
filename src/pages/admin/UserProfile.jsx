@@ -97,7 +97,7 @@ export default function UserProfile() {
     return (
         <div className="profile-container">
             <div className="profile-card">
-                <h2>👤 My Profile</h2>
+                <h2> My Profile</h2>
 
                 <div className="profile-details">
                     <div className="profile-row">

@@ -11,7 +11,7 @@
     padding: 2rem;
     overflow-y: auto;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #2f4f4fa3;
     color: #1c3c64;
 }
 .faculty-search-filter{
@@ -60,7 +60,7 @@
 
 .manage-faculty-header {
     display: flex;
-    color: #1c3c64;
+    color: #ffffff;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
@@ -128,7 +128,10 @@
     font-weight: bold;
     background-color: #f0f0f0;
 }
-
+.faculty-search-filter option,
+.faculty-search-filter select   {
+    font-size: 12px;
+}
 .faculty-user-cell {
     display: flex;
     align-items: center;
@@ -222,7 +225,10 @@
     margin-top: 1rem;
     gap: 75px;
 }
-
+.faculty-search-filter {
+    display: flex;
+    gap: 20px;
+}
     .faculty-modal-actions button {
         padding: 10px 30px;
         border: none;
@@ -309,17 +315,32 @@ span.faculty-actions {
 }
 
 @media (max-width: 768px) {
+
+    .faculty-modal{
+        width: 80%;
+        font-weight: 400;
+    }
     .faculty-table-header,
     .faculty-row {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         font-size: 12px;
     }
+.manage-faculty-header p{
+    display: none;
+}
 
+span.faculty-actions{
+    justify-content: flex-end;
+}
     .faculty-user-cell {
         flex-direction: column;
         align-items: flex-start;
     }
-
+.faculty-search-filter {
+    display: flex;
+    gap: 10px;
+    font-size: medium;
+}
     .faculty-filters {
         flex-direction: column;
     }

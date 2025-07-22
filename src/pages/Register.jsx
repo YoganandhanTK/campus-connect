@@ -54,15 +54,20 @@ function Register() {
     };
 
     return (
-        <div className="registerpage">
+        <div className="student-register-page">
             {!showModal ? (
                 <>
                     <Navbar />
-                    <div className="register-page">
-                        <form className="register-card" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+                    <div className="sr-content-wrapper">
+                        <form
+                            className="sr-card"
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                handleSubmit();
+                            }}
+                        >
                             <h2>Student Register</h2>
                             <p>Fill in your details to create an account</p>
-
 
                             <input
                                 type="text"
@@ -106,7 +111,7 @@ function Register() {
                                 <option value="2024">2024</option>
                                 <option value="2025">2025</option>
                             </select>
-                                                        
+
                             <input
                                 type="email"
                                 name="email"
@@ -116,7 +121,7 @@ function Register() {
                                 required
                             />
 
-                            <div className="password-wrapper">
+                            <div className="sr-password-wrapper">
                                 <input
                                     type={showPassword ? 'text' : 'password'}
                                     name="password"
@@ -126,14 +131,14 @@ function Register() {
                                     required
                                 />
                                 <span
-                                    className="password-toggle-icon"
+                                    className="sr-password-toggle-icon"
                                     onClick={() => setShowPassword(!showPassword)}
                                 >
                                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                                 </span>
                             </div>
 
-                            <div className="password-wrapper">
+                            <div className="sr-password-wrapper">
                                 <input
                                     type={showConfirmPassword ? 'text' : 'password'}
                                     name="confirmPassword"
@@ -143,18 +148,18 @@ function Register() {
                                     required
                                 />
                                 <span
-                                    className="password-toggle-icon"
+                                    className="sr-password-toggle-icon"
                                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                                 >
                                     {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                                 </span>
                             </div>
 
-                            <button type="submit" className="reg-btn-submit">
+                            <button type="submit" className="sr-btn-submit">
                                 Register
                             </button>
 
-                            <div className="login-link">
+                            <div className="sr-login-link">
                                 Already have an account?{' '}
                                 <span onClick={() => navigate('/login')}>Login</span>
                             </div>
@@ -164,16 +169,16 @@ function Register() {
                     <ToastContainer position="top-center" autoClose={3000} />
                 </>
             ) : (
-                <div className="modal-overlay">
-                    <div className="modal-box">
+                <div className="sr-modal-overlay">
+                    <div className="sr-modal-box">
                         <img
                             src="https://img.icons8.com/color/96/ok--v1.png"
                             alt="success"
-                            className="modal-icon"
+                            className="sr-modal-icon"
                         />
                         <h3>Registration Successful!</h3>
-                        <p>Wait for the Confirmation from Your Faculty .</p>
-                        <button className="modal-btn" onClick={() => navigate('/login')}>
+                        <p>Wait for the Confirmation from Your Faculty.</p>
+                        <button className="sr-modal-btn" onClick={() => navigate('/login')}>
                             OK
                         </button>
                     </div>
@@ -182,4 +187,5 @@ function Register() {
         </div>
     );
 }
+
 export default Register;

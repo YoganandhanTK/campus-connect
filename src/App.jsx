@@ -18,6 +18,9 @@ import StudentApprovals from './pages/faculty/StudentApprovals.jsx';
 import ForgotPassword from './pages/ForgotPassword.jsx';
 import UserProfile from './pages/admin/UserProfile.jsx';
 import ManagedStudents from './components/ManageStudents.jsx';
+import './App.css'; // Ensure global styles are applied
+import FacultyNotice from './pages/faculty/FacultyNotice.jsx';
+import StudentNotice from './pages/student/StudentNotice.jsx';
 
 const App = () => {
     const token = localStorage.getItem('token');
@@ -61,9 +64,22 @@ const App = () => {
                 >
                     <Route path="dashboard" element={<FacultyDashboard />} />
                     <Route path="student-approvals" element={<StudentApprovals />} />
-                    <Route path="noticeboard" element={<NoticeBoard />} />
+                    <Route path="notice" element={<FacultyNotice />} />
                     <Route path="profile" element={<UserProfile />} />
                     <Route path="managestudents" element={<ManagedStudents />} />
+                </Route>
+                <Route
+                    path="/student"
+                    element={
+                        <ProtectedRoute allowedRoles={['student']}>
+                            <MainLayout />
+                        </ProtectedRoute>
+                    }
+                >
+                    <Route path="dashboard" element={<StudentDashboard />} />
+                    <Route path="viewnotice" element={<StudentNotice />} />
+                    <Route path="profile" element={<UserProfile />} />
+                   
                 </Route>
 
 
@@ -77,14 +93,7 @@ const App = () => {
 
 
 
-                <Route
-                    path="/student"
-                    element={
-                        <ProtectedRoute allowedRoles={['student']}>
-                            <StudentDashboard />
-                        </ProtectedRoute>
-                    }
-                />
+                
 
                 {/* Fallback routes */}
                 <Route path="/unauthorized" element={<h2>Unauthorized Access</h2>} />

@@ -1,32 +1,19 @@
-
-/* Footer styles */
-.footer {
-    background-color: transparent;
-    color: #222;
-    max-width: 100vw;
-    height: 50px;
-    font-size: 0.95rem;
-/*    border-top: 1px solid #ccc;*/
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
+/* navbar.css */
 
 /* Main Navbar styles */
 .navbar {
     display: flex;
     max-width: 100vw;
-    height: 50px;
+    height: 60px; /* Adjusted height */
     justify-content: space-between;
-    align-items:center;
-    background-color: darkslategray;
-    padding: 8px 5rem;
+    align-items: center;
+    background-color: darkslategray; /* Your color */
+    padding: 1rem 3rem; /* Adjusted padding */
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-sizing: border-box; /* Ensure padding is included in total width/height */
 }
 
 /* Logo section */
@@ -35,27 +22,28 @@
     align-items: center;
     cursor: pointer;
     gap: 10px;
-    color: #333;
 }
 
 .logo-img {
     height: 35px;
     width: auto;
-    
 }
 
 .logo-text {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #fcfddd;
+    color: #fcfddd; /* Your color */
+    display: block; /* Default: Visible on desktop */
 }
 
-/* Navigation buttons */
+/* Navigation buttons & user info container */
 .nav-buttons {
     display: flex;
-    gap: 1rem;
+    align-items: center; /* Vertically align items */
+    gap: 1rem; /* Space between items */
 }
 
+/* Base button styles */
 .btn {
     padding: 0.5rem 1rem;
     font-size: .8rem;
@@ -66,92 +54,136 @@
     align-items: center;
     gap: 8px;
     height: 35px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Include border-color in transition */
 }
 
 .login-btn {
-    background-color: white;
-    color: darkslategray;
+    background-color: white; /* Your color */
+    color: darkslategray; /* Your color */
     border: 2px solid transparent;
 }
 .register-btn {
-    background-color: deepskyblue;
-    color: white;
+    background-color: deepskyblue; /* Your color */
+    color: white; /* Your color */
     border: 2px solid transparent;
 }
 
-    .login-btn:hover,
-    .register-btn:hover {
-        background-color: darkslategray;
-        color: white;
-        border: 2px solid white;
-    }
-
-.logout-btn {
-    background-color: #dc2626;
-    color: white;
-    border: none;
+.login-btn:hover,
+.register-btn:hover {
+    background-color: darkslategray; /* Your color */
+    color: white; /* Your color */
+    border: 2px solid white; /* Your color */
 }
 
-    .logout-btn:hover {
-        background-color: #b91c1c;
-    }
-
-/* Welcome message and badge */
-.welcome-msg {
-    display: flex;
-    align-items: center;
-    font-weight: 500;
-    gap: 10px;
-}
-
-.user-details{
-    display:contents;
-    align-items:baseline;
-    gap:10px;
-}
-
+/* User Info Section */
 .user-info {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: #ffffff;
+    color: #ffffff; /* Your color */
     font-weight: bold;
-    margin-right: 1rem;
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.user-info:hover {
+    opacity: 0.9; /* Slight hover effect */
+}
+
+.user-info .profile-icon {
+    font-size: 1.2rem;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: row; /* Desktop default: name and badge in a row */
+    align-items: center; /* Vertically align items in the row */
+    gap: 10px; /* Space between name and badge on desktop */
+}
+
+.user-name {
+    font-weight: 600;
+    color: #fcfddd; /* Ensure text is visible against darkslategray */
 }
 
 .badge {
     padding: 2px 8px;
     font-size: 0.75rem;
     border-radius: 8px;
-    background-color: #e5e7eb;
-    color: #111827;
+    font-weight: bold;
 }
 
 .role-admin {
-    background-color: #2563eb;
+    background-color: #2563eb; /* Your color */
     color: white;
 }
 
 .role-student {
-    background-color: #10b981;
+    background-color: #10b981; /* Your color */
     color: white;
 }
 
 .role-faculty {
-    background-color: #f59e0b;
+    background-color: #f59e0b; /* Your color */
     color: white;
 }
-/* tab view */
-@media (max-width: 756px) {
+
+/* Menu toggle button (when logged in) */
+.menu-toggle {
+    background-color: transparent;
+    border: 2px solid #fcfddd; /* Visible border on desktop, but it will be hidden by media query */
+    color: #fcfddd;
+    font-size: 1rem; /* Base font size */
+    padding: 0.5rem 0.8rem; /* Adjusted padding to fit text and icon */
+    min-width: 90px; /* Ensure a consistent width even if text changes */
+    justify-content: space-between; /* Space out icon and text */
+}
+
+.menu-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle hover for desktop */
+    color: #fcfddd;
+    border: 2px solid white; /* White border on hover */
+}
+
+.menu-toggle .menu-text {
+    display: block; /* Show "Menu" text on desktop */
+}
+
+.menu-toggle .fa-bars { /* Targeting the FontAwesome icon within menu-toggle */
+    font-size: 1.2rem; /* Larger icon size */
+}
+
+/* --- Responsive Adjustments --- */
+
+/* Desktop View (min-width: 769px) */
+@media (min-width: 769px) {
+    /* Hide the menu toggle button on desktop */
+    .menu-toggle {
+        display: none !important; /* Use !important to ensure it overrides other styles */
+    }
+}
+
+/* Tablet View (max-width: 768px) - Using your breakpoint */
+@media (max-width: 768px) {
     .navbar {
         padding: 0.5rem 2rem;
-        flex-direction: row;
-        align-items: flex-start;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        height: auto;
     }
 
-    .btn-text {
-        display: flex   ;
+    .logo-text {
+        font-size: 1.2rem; /* Keep text on tablet */
+    }
+
+    .logo-img {
+        height: 32px;
+    }
+
+    .nav-buttons {
+        gap: 0.6rem;
+        justify-content: flex-end;
+        order: 2; /* Ensures buttons/user-info wrap below logo if needed */
+        margin-top: 10px;
     }
 
     .btn {
@@ -162,56 +194,127 @@
         font-size: .8rem;
     }
 
-    .nav-buttons {
-        gap: 0.6rem;
-    }
-
-    .logo-text {
-        font-size: 1rem;
-    }
-
-    .logo-img {
-        height: 32px;
-    }
-
-    .welcome-msg {
-        display: none;
-    }
-}
-
-
-/* Mobile view */
-@media (max-width: 480px) {
-    .navbar {
-        padding: 0.5rem 2rem;
-        flex-direction: row;
-        align-items: flex-start;
-    }
     .btn-text {
-        display: none;
+        display: flex; /* Shows text */
     }
 
-    .btn {
-        padding: 0.6rem;
-        border-radius: 50%;
-        justify-content: center;
+    .user-info {
+        flex-grow: 1;
+        justify-content: flex-end;
+        margin-right: 10px;
+        gap: 0.5rem;
+    }
+
+    .user-details {
+        flex-direction: column; /* Stack name and badge vertically on tablet */
+        align-items: flex-end; /* Align to the right within their column */
+        gap: 2px;
+    }
+
+    /* Show the menu toggle button on tablet */
+    .menu-toggle {
+        display: flex; /* Override display: none from desktop */
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+        min-width: 80px; /* Adjust min-width for tablet */
+    }
+    .menu-toggle .fa-bars {
         font-size: 1.1rem;
     }
 
-    .nav-buttons {
-        gap: 0.6rem;
-    }
-
-    .logo-text {
-        font-size: 1rem;
-    }
-
-    .logo-img {
-        height: 32px;
-    }
-
-    .welcome-msg {
-        display: none;
+    .menu-toggle .menu-text {
+        display: block; /* Show "Menu" text on tablet */
     }
 }
 
+/* Mobile View (max-width: 480px) - Your breakpoint */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.5rem 1rem;
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        flex-grow: 1;
+        margin-right: 5px;
+    }
+
+    /* Hide logo text on mobile */
+    .logo-text {
+        display: none;
+    }
+
+    .logo-img {
+        height: 30px; /* Smaller logo for mobile */
+    }
+
+    .nav-buttons {
+        gap: 0.5rem;
+        width: auto;
+        flex-wrap: nowrap;
+        order: 2;
+        margin-top: 5px;
+    }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+        border-radius: 12%;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+
+    .btn-text {
+        display: none; /* Hide button text on smallest screens */
+    }
+
+    /* User Info on mobile */
+    .user-info {
+        flex-grow: 1;
+        justify-content: flex-end;
+        margin-right: 5px;
+        gap: 0.3rem;
+    }
+
+    .user-info .profile-icon {
+        font-size: 1.1rem;
+    }
+
+    .user-details {
+        flex-direction: column; /* Stack name and badge vertically on mobile */
+        align-items: flex-end; /* Align to the right */
+        font-size: 0.8rem;
+        gap: 0; /* No gap between stacked items */
+    }
+
+    .user-name {
+        font-size: 0.85rem;
+    }
+
+    .badge {
+        font-size: 0.65rem;
+        padding: 1px 6px;
+    }
+
+    /* Mobile Menu toggle */
+    .menu-toggle {
+        display: flex; /* Ensure it's displayed on mobile */
+        font-size: 1.2rem; /* Keep for icon size */
+        padding: 0.4rem 0.6rem; /* Reduced padding for mobile button */
+        min-width: unset; /* Remove min-width */
+        width: 45px; /* Fixed width for a square-ish icon button */
+        height: 35px; /* Match height of other buttons, adjust as needed */
+        justify-content: center; /* Center icon */
+        border-radius: 10px; /* More rounded corners */
+        border: 2px solid white; /* White border for better visibility */
+    }
+
+    .menu-toggle .fa-bars {
+        font-size: 1.3rem; /* Adjusted icon size to fit */
+    }
+
+    /* Hide the "Menu" text on mobile */
+    .menu-toggle .menu-text {
+        display: none;
+    }
+}
