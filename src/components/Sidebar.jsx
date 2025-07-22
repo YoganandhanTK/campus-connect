@@ -127,7 +127,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               </NavLink>
             </li>
             {user.department && (
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink
                   to={`/${user.role}/group-chat/${user.department.toLowerCase()}`}
                   className="nav-link sub-nav-link"
@@ -135,7 +135,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 >
                   <span className="nav-icon-bullet"></span> {user.department} Chat
                 </NavLink>
-              </li>
+              </li> */}
             )}
           </NavGroup>
         )}
