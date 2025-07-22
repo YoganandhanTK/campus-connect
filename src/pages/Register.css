@@ -1,38 +1,53 @@
-/* Main wrapper */
-.student-register-page {
+/* src/pages/Register.css */
+
+/* ------------------------------------- */
+/* 1. Base Styles & Global Resets      */
+/* ------------------------------------- */
+body {
+    margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5; /* Light gray background for the entire page */
+    color: #333;
+}
+
+/* ------------------------------------- */
+/* 2. Page Layout & Wrapper            */
+/* ------------------------------------- */
+.student-register-page {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    background-image: url('../assets/backg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    justify-content: space-between; /* Pushes footer to the bottom */
+    background-image: url('../assets/backg.jpg'); /* Background image for the page */
+    background-size: cover; /* Covers the entire element */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents image repetition */
 }
 
-/* Main content */
 .sr-content-wrapper {
-    flex: 1;
+    flex: 1; /* Allows it to take available space */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px 15px;
+    padding: 30px 15px; /* Padding around the form wrapper */
 }
 
-/* Form card */
+/* ------------------------------------- */
+/* 3. Form Card Styling                */
+/* ------------------------------------- */
 .sr-card {
-    max-width: 450px;
-    gap: 15px;
-    background-color: #33622cb8;
-    backdrop-filter: blur(4px);
+    max-width: 500px;
+    background-color: #33622cb8; /* Semi-transparent dark green */
+    backdrop-filter: blur(4px); /* Frosted glass effect */
     padding: 2.5rem;
     border-radius: 12px;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
     width: 100%;
     display: flex;
     flex-direction: column;
-    color: gainsboro;
+    gap: 15px; /* Spacing between elements inside the card */
+    color: gainsboro; /* Default text color for the card */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 .sr-card h2 {
@@ -49,7 +64,15 @@
     margin-bottom: 10px;
 }
 
-/* Inputs */
+/* ------------------------------------- */
+/* 4. Form Elements (Inputs, Labels)   */
+/* ------------------------------------- */
+.form-group {
+    margin-bottom: 15px; /* Spacing between form fields */
+    position: relative; /* For positioning error messages/icons */
+    text-align: left; /* Align content within form group */
+}
+
 .sr-card input,
 .sr-card select {
     width: 100%;
@@ -60,38 +83,38 @@
     font-family: inherit;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #f3f9f5;
+    background-color: #f3f9f5; /* Light background for inputs */
     color: #333;
     box-sizing: border-box;
     transition: border-color 0.3s;
-    appearance: none;
+    appearance: none; /* Removes default dropdown arrow */
     -webkit-appearance: none;
     -moz-appearance: none;
 }
 
 .sr-card input:focus,
 .sr-card select:focus {
-    border-color: #45acd9;
+    border-color: #45acd9; /* Blue border on focus */
     outline: none;
 }
 
-/* Custom dropdown arrow */
+/* Custom dropdown arrow for select */
 .sr-card select {
-    background-image: url('../assets/down-chevron.svg');
+    background-image: url('../assets/down-chevron.svg'); /* Path to your custom arrow */
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 17px;
-    padding-right: 36px;
+    padding-right: 36px; /* Make space for the arrow */
 }
 
-/* Password wrapper */
+/* Password wrapper and toggle icon */
 .sr-password-wrapper {
     position: relative;
     width: 100%;
 }
 
 .sr-password-wrapper input {
-    padding-right: 2.5rem;
+    padding-right: 2.5rem; /* Space for the eye icon */
 }
 
 .sr-password-toggle-icon {
@@ -101,12 +124,30 @@
     transform: translateY(-50%);
     cursor: pointer;
     color: #666;
-    font-size: 20px;
+    font-size: 20px; /* Adjust icon size if needed */
 }
 
-/* Button */
+/* ------------------------------------- */
+/* 5. Error & Validation Feedback      */
+/* ------------------------------------- */
+.input-error {
+    border: 1px solid #f44336 !important; /* Red border for invalid input */
+}
+
+.error-text {
+    color: #f44336; /* Red text for error messages */
+    font-size: 0.85em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+    padding-left: 5px;
+}
+
+/* ------------------------------------- */
+/* 6. Buttons & Links                  */
+/* ------------------------------------- */
 .sr-btn-submit {
-    background-color: #60cfff;
+    background-color: #60cfff; /* Light blue button */
     color: white;
     border: none;
     padding: 12px;
@@ -119,10 +160,9 @@
 }
 
 .sr-btn-submit:hover {
-    background-color: #20789e;
+    background-color: #20789e; /* Darker blue on hover */
 }
 
-/* Link to login */
 .sr-login-link {
     margin-top: 10px;
     text-align: center;
@@ -130,7 +170,7 @@
 }
 
 .sr-login-link span {
-    color: #c9cee3; 
+    color: #c9cee3; /* Lighter blue for the link */
     font-weight: bold;
     cursor: pointer;
 }
@@ -139,15 +179,27 @@
     text-decoration: underline;
 }
 
-/* Success Modal */
+/* ------------------------------------- */
+/* 7. Full-screen Modal Styles         */
+/* ------------------------------------- */
 .sr-modal-overlay {
     position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.4);
+    inset: 0; /* Shorthand for top, right, bottom, left 0 */
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black overlay */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 999; /* High z-index to appear on top */
+    color: white; /* Default text color for the background overlay (if any) */
+    transition: background-color 0.3s ease;
+}
+
+.sr-success-bg {
+    background-color: #4CAF50; /* Green background for success */
+}
+
+.sr-error-bg {
+    background-color: #f44336; /* Red background for error */
 }
 
 .sr-modal-box {
@@ -158,10 +210,12 @@
     text-align: center;
     max-width: 400px;
     width: 90%;
+    color: #333; /* Dark text color for modal content */
 }
 
 .sr-modal-icon {
     width: 64px;
+    height: 64px; /* Ensured explicit height for consistency */
     margin-bottom: 15px;
 }
 
@@ -176,10 +230,12 @@
     font-size: 14px;
     color: #444;
     margin-bottom: 20px;
+    line-height: 1.6;
+    white-space: pre-wrap; /* Preserve whitespace and newlines */
 }
 
 .sr-modal-btn {
-    background-color: #45acd9;
+    background-color: #45acd9; /* Blue button */
     color: white;
     border: none;
     padding: 10px 18px;
@@ -192,15 +248,19 @@
 }
 
 .sr-modal-btn:hover {
-    background-color: #3795bb;
+    background-color: #3795bb; /* Darker blue on hover */
 }
 
-/* Toastify */
+/* ------------------------------------- */
+/* 8. Toastify Adjustments             */
+/* ------------------------------------- */
 .Toastify__toast {
-    font-size: 14px;
+    font-size: 14px; /* Adjust toast notification font size */
 }
 
-/* Responsive */
+/* ------------------------------------- */
+/* 9. Responsive Design                */
+/* ------------------------------------- */
 @media (max-width: 500px) {
     .sr-card {
         padding: 25px 20px;
